@@ -190,6 +190,7 @@ function App() {
           onPredict={handlePredict}
           onReset={handleReset}
           loading={loading}
+          collegeData={collegeData}
         />
 
         {hasSearched && rank && category && (
