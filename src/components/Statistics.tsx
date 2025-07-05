@@ -27,7 +27,7 @@ const Statistics: React.FC<StatisticsProps> = ({
       borderColor: 'border-blue-200'
     },
     {
-      label: 'Eligible Colleges',
+      label: 'Eligible Choices',
       value: eligibleColleges.toString(),
       icon: Building,
       color: 'green',
