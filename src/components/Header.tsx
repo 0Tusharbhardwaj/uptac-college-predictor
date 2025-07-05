@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             </div>
             <div className="text-left">
               <h1 className="text-3xl md:text-4xl font-bold tracking-wide bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                UPTAC College Predictor 2024
+                UPTAC College Predictor 2025
               </h1>
               <p className="text-gray-600 font-medium">Find Your Perfect Engineering College Match</p>
             </div>
