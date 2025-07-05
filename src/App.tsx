@@ -39,24 +39,37 @@ function App() {
   }, []);
 
   const loadCollegeData = async () => {
-    try {
-      setDataLoading(true);
-      setError(null);
-      
-      const response = await fetch('/uptac_orcr_full.json');
-      if (!response.ok) {
-        throw new Error('Failed to load college data');
-      }
-      
-      const data = await response.json();
-      setCollegeData(data);
-    } catch (err) {
-      setError('Failed to load college data. Please refresh the page and try again.');
-      console.error('Error loading college data:', err);
-    } finally {
-      setDataLoading(false);
+  try {
+    setDataLoading(true);
+    setError(null);
+    
+    const response = await fetch('/uptac_orcr_full.json'); // Or use your actual file
+    if (!response.ok) {
+      throw new Error('Failed to load college data');
     }
-  };
+
+    const data = await response.json();
+
+    // ✅ Normalize JSON field names to match your interface
+    const mappedData = data.map((item: any) => ({
+      institute: item.Institute,
+      program: item.Program,
+      quota: item.Quota,
+      category: item.Category,
+      round: item.Round,
+      opening_rank: item["Opening Rank"],
+      closing_rank: item["Closing Rank"],
+    }));
+
+    setCollegeData(mappedData);
+  } catch (err) {
+    setError('Failed to load college data. Please refresh the page and try again.');
+    console.error('Error loading college data:', err);
+  } finally {
+    setDataLoading(false);
+  }
+};
+
 
   const handlePredict = async () => {
     if (!rank || !category || !quota) {
