@@ -221,7 +221,7 @@ function App() {
                   <span className="text-3xl">🎓</span>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Welcome to UPTAC College Predictor 2024
+                  Welcome to UPTAC College Predictor 2025
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Discover your perfect engineering college match with our intelligent prediction system. 
