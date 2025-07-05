@@ -103,19 +103,26 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </select>
         </div>
 
-        {/* Institute Filter */}
-        <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-700">
-            Institute (Optional)
-          </label>
-          <input
-            type="text"
-            value={institute}
-            onChange={(e) => setInstitute(e.target.value)}
-            placeholder="Filter by institute name"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
-          />
-        </div>
+      {/* Institute Filter (Dropdown) */}
+<div className="space-y-2">
+  <label className="block text-sm font-semibold text-gray-700">
+    Institute (Optional)
+  </label>
+  <select
+    value={institute}
+    onChange={(e) => setInstitute(e.target.value)}
+    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 text-lg font-medium"
+  >
+    <option value="">All Institutes</option>
+    {Array.from(new Set(collegeData.map(c => c.institute)))
+      .sort()
+      .map((inst, idx) => (
+        <option key={idx} value={inst}>
+          {inst}
+        </option>
+      ))}
+  </select>
+</div>
 
         {/* Program Filter */}
         <div className="space-y-2">
