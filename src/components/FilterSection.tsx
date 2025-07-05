@@ -81,8 +81,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({
             <option value="SC">SC</option>
             <option value="ST">ST</option>
             <option value="BC">BC</option>
-            <option value="OBC">OBC</option>
-            <option value="EWS">EWS</option>
+            <option value="OPEN(TF)">FW</option>
+            <option value="EWS(OPEN)">EWS</option>
           </select>
         </div>
 
