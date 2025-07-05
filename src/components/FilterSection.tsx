@@ -17,7 +17,15 @@ interface FilterSectionProps {
   onPredict: () => void;
   onReset: () => void;
   loading: boolean;
-   }[]; 
+ collegeData: {
+    institute: string;
+    program: string;
+    quota: string;
+    category: string;
+    round: string;
+    opening_rank: number;
+    closing_rank: number;
+  }[]; 
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
