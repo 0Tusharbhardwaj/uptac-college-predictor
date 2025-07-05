@@ -306,7 +306,7 @@ function App() {
             {/* Copyright and Disclaimer */}
             <div className="text-center space-y-3">
               <p className="text-gray-300 text-lg">
-                © 2024 UPTAC College Predictor. Based on UPTAC B.Tech 2024 admission data.
+                © 2025 UPTAC College Predictor. Based on UPTAC B.Tech 2024 admission data.
               </p>
               <p className="text-gray-400 max-w-4xl mx-auto leading-relaxed">
                 Disclaimer: This is a prediction tool based on historical data. Final admissions depend on various factors including seat availability, counseling rounds, document verification, and official UPTAC policies. Always refer to official UPTAC notifications for the most accurate information.
