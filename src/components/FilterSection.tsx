@@ -17,6 +17,7 @@ interface FilterSectionProps {
   onPredict: () => void;
   onReset: () => void;
   loading: boolean;
+   }[]; 
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
@@ -34,7 +35,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   setRound,
   onPredict,
   onReset,
-  loading
+  loading,
+  collegeData 
 }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
