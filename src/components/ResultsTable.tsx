@@ -19,7 +19,7 @@ interface ResultsTableProps {
   onPrint: () => void;
 }
 
-const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPrint }) => {
+const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV }) => {
   if (results.length === 0) {
     return (
       <div className="bg-white rounded-2xl shadow-lg p-12 text-center border border-gray-100">
@@ -35,79 +35,149 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
   }
 
   return (
-    <div className="relative">
-      {/* ✅ Watermark Overlay */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10 rotate-[315deg] z-0 print:opacity-10">
-        <h1 className="text-6xl font-extrabold text-gray-400 select-none whitespace-nowrap">
-          Made by Tushar Bhardwaj
-        </h1>
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 relative">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center p-8 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-gray-200">
+        <div className="flex items-center gap-3 mb-4 lg:mb-0">
+          <div className="p-3 bg-indigo-100 rounded-xl">
+            <Trophy className="w-8 h-8 text-indigo-600" />
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900">Eligible Colleges</h2>
+            <p className="text-gray-600 font-medium">
+              {results.length} colleges match your criteria
+            </p>
+          </div>
+        </div>
+
+        <div className="flex gap-3">
+          <button
+            onClick={onExportCSV}
+            className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            <Download className="w-5 h-5" />
+            Export CSV
+          </button>
+        </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center p-8 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-gray-200">
-          <div className="flex items-center gap-3 mb-4 lg:mb-0">
-            <div className="p-3 bg-indigo-100 rounded-xl">
-              <Trophy className="w-8 h-8 text-indigo-600" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">Eligible Colleges</h2>
-              <p className="text-gray-600 font-medium">{results.length} colleges match your criteria</p>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              onClick={onExportCSV}
-              className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              <Download className="w-5 h-5" />
-              Export CSV
-            </button>
-          </div>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full relative z-10">
-            <thead className="bg-gray-50 border-b border-gray-200">
-              <tr>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Rank</th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
-                  <div className="flex items-center gap-2"><Building2 className="w-4 h-4" />Institute</div>
-                </th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
-                  <div className="flex items-center gap-2"><BookOpen className="w-4 h-4" />Program</div>
-                </th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
-                  <div className="flex items-center gap-2"><MapPin className="w-4 h-4" />Quota</div>
-                </th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
-                  <div className="flex items-center gap-2"><Users className="w-4 h-4" />Category</div>
-                </th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Round</th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Opening Rank</th>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Closing Rank</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {results.map((college, index) => (
-                <tr key={index} className="hover:bg-gray-50 transition duration-200">
-                  <td className="px-6 py-5 font-bold text-indigo-600">{index + 1}</td>
-                  <td className="px-6 py-5 text-sm text-gray-900">{college.institute}</td>
-                  <td className="px-6 py-5 text-sm text-gray-900">{college.program}</td>
-                  <td className="px-6 py-5 text-sm">{college.quota}</td>
-                  <td className="px-6 py-5 text-sm">{college.category}</td>
-                  <td className="px-6 py-5 text-sm">{college.round}</td>
-                  <td className="px-6 py-5 text-sm font-bold text-gray-800">{college.opening_rank.toLocaleString()}</td>
-                  <td className="px-6 py-5 text-sm font-bold text-indigo-600">{college.closing_rank.toLocaleString()}</td>
+      <div className="overflow-x-auto relative">
+        <table className="w-full relative z-10">
+          <thead className="bg-gray-50 border-b border-gray-200">
+            <tr>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Rank</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
+                <div className="flex items-center gap-2">
+                  <Building2 className="w-4 h-4" />
+                  Institute
+                </div>
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Program
+                </div>
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  Quota
+                </div>
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  Category
+                </div>
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">
+                Round
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Opening Rank</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase">Closing Rank</th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {results.map((college, index) => (
+              <React.Fragment key={index}>
+                <tr
+                  className={`hover:bg-gray-50 transition-colors duration-200 ${
+                    index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
+                  }`}
+                >
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-100 text-indigo-600 rounded-lg font-bold text-sm">
+                      {index + 1}
+                    </div>
+                  </td>
+                  <td className="px-6 py-5 text-sm text-gray-900">
+                    <div className="font-semibold max-w-xs" title={college.institute}>
+                      {college.institute.length > 50
+                        ? `${college.institute.substring(0, 50)}...`
+                        : college.institute}
+                    </div>
+                  </td>
+                  <td className="px-6 py-5 text-sm text-gray-900">
+                    <div className="font-medium max-w-xs" title={college.program}>
+                      {college.program.length > 40
+                        ? `${college.program.substring(0, 40)}...`
+                        : college.program}
+                    </div>
+                  </td>
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <span
+                      className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${
+                        college.quota === 'Home State'
+                          ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                          : 'bg-green-100 text-green-800 border border-green-200'
+                      }`}
+                    >
+                      {college.quota}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <span
+                      className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${
+                        college.category === 'OPEN'
+                          ? 'bg-purple-100 text-purple-800 border border-purple-200'
+                          : 'bg-orange-100 text-orange-800 border border-orange-200'
+                      }`}
+                    >
+                      {college.category}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <span className="inline-flex px-3 py-1 text-sm font-semibold rounded-full bg-yellow-100 text-yellow-800 border border-yellow-200">
+                      {college.round}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5 whitespace-nowrap text-sm font-bold text-gray-900">
+                    {college.opening_rank.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-5 whitespace-nowrap text-sm font-bold text-indigo-600">
+                    {college.closing_rank.toLocaleString()}
+                  </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
 
-        <div className="bg-gray-50 px-8 py-4 border-t border-gray-200 text-center text-sm text-gray-600">
-          Showing {results.length} colleges sorted by closing rank (ascending)
-        </div>
+                {/* ✅ Watermark row every 10 rows */}
+                {(index + 1) % 10 === 0 && (
+                  <tr>
+                    <td colSpan={8}>
+                      <div className="text-center py-6 text-gray-300 text-xl italic rotate-[-2deg]">
+                        Made by Tushar Bhardwaj
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="bg-gray-50 px-8 py-4 border-t border-gray-200">
+        <p className="text-sm text-gray-600 text-center">
+          Showing {results.length} eligible colleges sorted by closing rank (ascending)
+        </p>
       </div>
     </div>
   );
