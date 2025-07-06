@@ -61,13 +61,13 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
             Export CSV
           </button>
 
-          <button
+{/*           <button
             onClick={onPrint}
             className="flex items-center gap-2 px-6 py-3 bg-gray-600 text-white rounded-xl hover:bg-gray-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <Printer className="w-5 h-5" />
             Print
-          </button>
+          </button> */}
         </div>
       </div>
 
