@@ -59,15 +59,15 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
           >
             <Download className="w-5 h-5" />
             Export CSV
-               </button>
-{/*        
+          </button>
+
           <button
             onClick={onPrint}
             className="flex items-center gap-2 px-6 py-3 bg-gray-600 text-white rounded-xl hover:bg-gray-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <Printer className="w-5 h-5" />
             Print
-          </button> */}
+          </button>
         </div>
       </div>
 
@@ -75,9 +75,7 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
-              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
-                Rank
-              </th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Rank</th>
               <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
                 <div className="flex items-center gap-2">
                   <Building2 className="w-4 h-4" />
@@ -102,21 +100,21 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
                   Category
                 </div>
               </th>
+
+              {/* ✅ NEW Round Column */}
               <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
-                Opening Rank
+                Round
               </th>
-              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
-                Closing Rank
-              </th>
+
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Opening Rank</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">Closing Rank</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {results.map((college, index) => (
               <tr 
                 key={index} 
-                className={`hover:bg-gray-50 transition-colors duration-200 ${
-                  index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
-                }`}
+                className={`hover:bg-gray-50 transition-colors duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'}`}
               >
                 <td className="px-6 py-5 whitespace-nowrap">
                   <div className="flex items-center justify-center w-8 h-8 bg-indigo-100 text-indigo-600 rounded-lg font-bold text-sm">
@@ -125,18 +123,12 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
                 </td>
                 <td className="px-6 py-5 text-sm text-gray-900">
                   <div className="font-semibold max-w-xs" title={college.institute}>
-                    {college.institute.length > 50 
-                      ? `${college.institute.substring(0, 50)}...` 
-                      : college.institute
-                    }
+                    {college.institute.length > 50 ? `${college.institute.substring(0, 50)}...` : college.institute}
                   </div>
                 </td>
                 <td className="px-6 py-5 text-sm text-gray-900">
                   <div className="font-medium max-w-xs" title={college.program}>
-                    {college.program.length > 40 
-                      ? `${college.program.substring(0, 40)}...` 
-                      : college.program
-                    }
+                    {college.program.length > 40 ? `${college.program.substring(0, 40)}...` : college.program}
                   </div>
                 </td>
                 <td className="px-6 py-5 whitespace-nowrap">
@@ -157,6 +149,14 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ results, onExportCSV, onPri
                     {college.category}
                   </span>
                 </td>
+
+                {/* ✅ NEW Round Column */}
+                <td className="px-6 py-5 whitespace-nowrap">
+                  <span className="inline-flex px-3 py-1 text-sm font-semibold rounded-full bg-yellow-100 text-yellow-800 border border-yellow-200">
+                    {college.round}
+                  </span>
+                </td>
+
                 <td className="px-6 py-5 whitespace-nowrap text-sm font-bold text-gray-900">
                   {college.opening_rank.toLocaleString()}
                 </td>
