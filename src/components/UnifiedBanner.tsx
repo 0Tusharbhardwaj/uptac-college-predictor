@@ -18,7 +18,7 @@ const UnifiedBanner: React.FC = () => {
                 Join our WhatsApp group for expert guidance, peer support, and alerts.
               </p>
               <a
-                href="https://chat.whatsapp.com/I5B4dCtJem8A3JEgSiKtgM?mode=r_c"
+                href="https://chat.whatsapp.com/J90VTEyVjclFnYn2E6p1Rw?mode=r_c"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white text-indigo-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-indigo-50 transition-all duration-300 transform hover:scale-105 shadow"
