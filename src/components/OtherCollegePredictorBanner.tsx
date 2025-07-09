@@ -13,9 +13,9 @@ const OtherCollegePredictorBanner: React.FC = () => {
               <School className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-1">Explore Other Courses College Predictor</h3>
+              <h3 className="text-xl font-bold mb-1">Predict for Other Courses Too!</h3>
               <p className="text-green-100 text-sm">
-                Get accurate predictions for B.Pharm, BFA, BHMCT, BFAD, B.Voc & Lateral Entry colleges — all in one place.
+                Check your chances for B.Pharm, BFA, BHMCT, BFAD, B.Voc & LE courses with our new smart predictor.
               </p>
             </div>
           </div>
