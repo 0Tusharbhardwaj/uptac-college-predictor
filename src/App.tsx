@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
+import OtherCollegePredictorBanner from './components/OtherCollegePredictorBanner';
 import WhatsAppBanner from './components/WhatsAppBanner';
 import FilterSection from './components/FilterSection';
 import Statistics from './components/Statistics';
@@ -162,6 +163,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
+      <OtherCollegePredictorBanner />
       <WhatsAppBanner />
       
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
