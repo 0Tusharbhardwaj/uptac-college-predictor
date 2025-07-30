@@ -93,14 +93,14 @@ const FilterSection: React.FC<FilterSectionProps> = ({
             <option value="BC">BC</option>
             <option value="OPEN(TF)">FW</option>
             <option value="EWS(OPEN)">EWS</option>
-            <option value="SC(GIRL)">SC (GIRL)</option>
-            <option value="ST(GIRL)">ST (GIRL)</option>
-            <option value="EWS(GL)">EWS (GL)</option>
-            <option value="BC(GIRL)">BC (GIRL)</option>
-            <option value="BC(AF)">BC (AF)</option>
-            <option value="OPEN(AF)">OPEN (AF)</option>
-            <option value="SC(AF)">SC (AF)</option>
-            <option value="ST(AF)">ST (AF)</option>
+            <option value="SC(GIRL)">SC(GIRL)</option>
+            <option value="ST(GIRL)">ST(GIRL)</option>
+            <option value="EWS(GL)">EWS(GL)</option>
+            <option value="BC(GIRL)">BC(GIRL)</option>
+            <option value="BC(AF)">BC(AF)</option>
+            <option value="OPEN(AF)">OPEN(AF)</option>
+            <option value="SC(AF)">SC(AF)</option>
+            <option value="ST(AF)">ST(AF)</option>
           </select>
         </div>
 
