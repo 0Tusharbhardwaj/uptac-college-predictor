@@ -286,7 +286,7 @@ function App() {
               <Heart className="w-6 h-6 text-red-500 animate-pulse" />
               <span>by</span>
               <span className="font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                TUSHAR BHARDWAJ
+                TUSHAR BHARDWAJ , SHIVAM PANDEY
               </span>
             </div>
             
